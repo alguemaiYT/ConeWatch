@@ -3,8 +3,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import AppLayout from "@/components/AppLayout";
+import Overview from "@/pages/Overview";
+import LiveDebug from "@/pages/LiveDebug";
+import CameraProfiles from "@/pages/CameraProfiles";
+import EnvironmentPresets from "@/pages/EnvironmentPresets";
+import SessionDetail from "@/pages/SessionDetail";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -15,8 +20,13 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Overview />} />
+            <Route path="/live-debug" element={<LiveDebug />} />
+            <Route path="/camera-profiles" element={<CameraProfiles />} />
+            <Route path="/environments" element={<EnvironmentPresets />} />
+            <Route path="/sessions/:id" element={<SessionDetail />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
