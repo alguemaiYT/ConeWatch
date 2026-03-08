@@ -36,6 +36,36 @@ npm i
 npm run dev
 ```
 
+## Fast local start (optimized)
+
+This repository now includes an automated startup script with performance-oriented defaults:
+
+```sh
+# Optimized local server (production build + preview)
+./start-local.sh
+# or
+npm run start:local
+```
+
+Optional modes and ports:
+
+```sh
+# Dev mode
+./start-local.sh dev
+
+# Custom host/ports
+HOST=0.0.0.0 DEV_PORT=8080 PREVIEW_PORT=4173 ./start-local.sh
+
+# Force npm (useful if bun crashes with "Illegal instruction")
+PKG_MANAGER_OVERRIDE=npm ./start-local.sh
+```
+
+What the script does:
+
+- Automatically installs dependencies (prefers `bun` when available, fallback to `npm`)
+- Builds an optimized bundle for local preview in `prod` mode
+- Starts the local server with explicit host/port configuration
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).

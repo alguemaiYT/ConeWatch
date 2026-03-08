@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
+    "start:local": "bash ./start-local.sh",
+    "start:local:dev": "bash ./start-local.sh dev",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
